@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
-from users.views import login
+from users import views
 
 
 app_name = 'users'
 urlpatterns = [
-    path("login/", login, name="login"),
+    path("login/", views.login, name="login"),
+    path('logout', views.logout, name="logout"),
 ]

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="" href="{% static 'css/auth_style.css' %}" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'images/logo.svg' %}"
+      type="image/svg"
+    />
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+</body>
+</html>
