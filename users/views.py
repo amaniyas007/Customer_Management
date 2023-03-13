@@ -34,6 +34,7 @@ def logout(request):
     return HttpResponseRedirect(reverse("web:index"))
 
 def signup(request):
-    if request.method == "POST":
-        form = UserForm(request.POST)
-        pass
+    return render(request, "users/signup.html")
+    # if request.method == "POST":
+    #     form = UserForm(request.POST)
+    #     pass
