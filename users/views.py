@@ -1,6 +1,7 @@
 from django.shortcuts import render, reverse
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.http import HttpResponseRedirect
+from users.forms import UserForm
 
 
 def login(request):
@@ -31,3 +32,8 @@ def login(request):
 def logout(request):
     auth_logout(request)
     return HttpResponseRedirect(reverse("web:index"))
+
+def signup(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        pass
