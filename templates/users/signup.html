@@ -3,61 +3,17 @@
   <h2>Create an account</h2>
   <form method="post">
     {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group">
+          <label" for="{{field.id_for_label}}">{{field.label}}</label>
+          {{field}}
+      </div>
+    {% endfor %}
     <div class="form-group">
-      <input
-        type="text"
-        class="form-control"
-        name="first_name"
-        placeholder="First Name"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <input
-        type="text"
-        class="form-control"
-        name="last_name"
-        placeholder="Last Name"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <input
-        type="text"
-        class="form-control"
-        name="phone_number"
-        placeholder="Phone Number"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <input
-        type="date"
-        class="form-control"
-        name="dob"
-        placeholder="Date of Birth"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <input
-        type="email"
-        class="form-control"
-        name="email"
-        placeholder="Email"
-      />
-    </div>
-    <div class="form-group">
-      <input
-        type="password"
-        class="form-control"
-        name="password"
-        placeholder="Password"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <input style="margin-bottom: 16px;" type="submit" value="Signup" class="button">
+      {% if error %}
+        <p class="error-message">{{message}}</p>
+      {% endif %}
+      <input style="margin-bottom: 16px;" type="submit" value="Create Account" class="button">
       <a class="button" href="{% url 'users:login' %}">Login</a>
     </div>
   </form>

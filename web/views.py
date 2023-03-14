@@ -4,6 +4,6 @@ from django.http.response import HttpResponse
 
 def index(request):
     context = {
-        "title": "Home",
+        "title": "Home Page",
     }
     return render(request, "web/index.html", context=context)

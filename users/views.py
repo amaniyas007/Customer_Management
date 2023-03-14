@@ -5,9 +5,7 @@ from django.contrib.auth.models import User
 
 
 from main.functions import generate_form_errors
-from posts.models import Customer
 from posts.forms import CustomerForm
-
 
 
 def login(request):
@@ -45,7 +43,9 @@ def signup(request):
         form = CustomerForm(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
+            # print(form.cleaned_data)
             form_data = form.cleaned_data
+            
             if User.objects.filter(username=form_data['username']):
                 form = CustomerForm(instance=instance)
                 context = {
@@ -64,7 +64,8 @@ def signup(request):
                     last_name=form_data['last_name']
                 )
                 instance.user = new_user
-                instance.save()
+                instance.save()         
+
             user = authenticate(
                 request, username=form_data['username'], password=form_data['password'])
             auth_login(request, user)
