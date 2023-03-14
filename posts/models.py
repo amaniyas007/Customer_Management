@@ -8,7 +8,9 @@ class Customer(models.Model):
     email = models.EmailField(null=True, blank=True)
     address = models.CharField(max_length=255)
     date_of_birth = models.DateField()
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey('auth.User',on_delete=models.CASCADE)
+   
+    
 
     def __str__(self):
         return self.first_name
